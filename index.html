@@ -1,0 +1,1062 @@
+<!-- ... existing code ... -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة الكيمياء الشاملة للثانوية العامة | الباب الأول والثاني</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Cairo & Inter Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- KaTeX for math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        chem: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .nav-tab.active {
+            background-color: #059669;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+        }
+        .sub-tab.active-sub {
+            background-color: #0f766e;
+            color: #ffffff;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 9999px;
+        }
+        .arrow-flow::after {
+            content: '➔';
+            margin-right: 0.5rem;
+            margin-left: 0.5rem;
+            color: #059669;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50 antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Header Banner -->
+    <header class="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-emerald-700/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-emerald-500/20 border border-emerald-400/30 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+                        🧪
+                    </div>
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-black tracking-wide text-emerald-400">المعلّم الكيميائي التفاعلي</h1>
+                        <p class="text-xs text-slate-300 font-semibold">الموسوعة المباشرة الشاملة | الثانوية العامة (الباب 1 & 2)</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Bar -->
+                <nav class="flex flex-wrap gap-1.5 bg-slate-800/80 p-1.5 rounded-2xl border border-slate-700/50 text-xs sm:text-sm font-bold">
+                    <button onclick="showSection('sec-ch1')" id="tab-ch1" class="nav-tab active px-3.5 py-2 rounded-xl transition flex items-center gap-2">
+                        <i class="fa-solid fa-[#ffffff] fa-atom"></i> الباب 1: العناصر الانتقالية
+                    </button>
+                    <button onclick="showSection('sec-ch2-qual')" id="tab-ch2-qual" class="nav-tab px-3.5 py-2 rounded-xl transition flex items-center gap-2">
+                        <i class="fa-solid fa-[#ffffff] fa-vial"></i> الباب 2: التحليل الوصفي
+                    </button>
+                    <button onclick="showSection('sec-ch2-quant')" id="tab-ch2-quant" class="nav-tab px-3.5 py-2 rounded-xl transition flex items-center gap-2">
+                        <i class="fa-solid fa-[#ffffff] fa-calculator"></i> الباب 2: المسائل والتحليل الكمي
+                    </button>
+                    <button onclick="showSection('sec-practice')" id="tab-practice" class="nav-tab px-3.5 py-2 rounded-xl transition flex items-center gap-2">
+                        <i class="fa-solid fa-[#ffffff] fa-brain"></i> بنك التحدي والتفاعلات
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- ==========================================
+             SECTION 1: CHAPTER 1 (TRANSITION ELEMENTS)
+             ========================================== -->
+        <section id="sec-ch1" class="space-y-8">
+            
+            <!-- Sub-Navigation for Ch 1 -->
+            <div class="flex flex-wrap gap-2 bg-white p-2 rounded-2xl border border-slate-200 shadow-sm text-xs font-bold">
+                <button onclick="showCh1Sub('ch1-elements')" id="sub-elements" class="sub-tab active-sub px-4 py-2 rounded-xl transition">1. العناصر والتوزيع والخاصية المغناطيسية</button>
+                <button onclick="showCh1Sub('ch1-alloys')" id="sub-alloys" class="sub-tab px-4 py-2 rounded-xl transition">2. السبائك وأنواعها</button>
+                <button onclick="showCh1Sub('ch1-iron')" id="sub-iron" class="sub-tab px-4 py-2 rounded-xl transition">3. استخلاص الحديد ومخطط الأكاسيد</button>
+            </div>
+
+            <!-- SUB-TAB 1.1: Elements, Config & Magnetic Tool -->
+            <div id="ch1-elements" class="space-y-6">
+                
+                <!-- Electron Counting & Magnetic Calc Box -->
+                <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950 text-white rounded-3xl p-6 shadow-xl border border-emerald-500/20">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 border-b border-slate-700 pb-4">
+                        <div>
+                            <span class="bg-emerald-500/20 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full">أداة تفاعلية سريعة</span>
+                            <h2 class="text-lg font-black mt-2">حاسبة الخواص المغناطيسية وألوان الأيونات ($d^n$)</h2>
+                        </div>
+                        <p class="text-xs text-slate-300 max-w-md">اختر العنصر الانتقالي وحالة التأكسد لحساب عدد الإلكترونات المفردة والعزم المغناطيسي ورؤية الخاصية واللون تلقائياً.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                        <div class="space-y-3">
+                            <label class="block text-xs font-bold text-slate-300">اختر العنصر:</label>
+                            <select id="mag-element" onchange="updateMagneticCalc()" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-xs text-white focus:ring-2 focus:ring-emerald-500">
+                                <option value="21">Sc (السكانديوم - 21)</option>
+                                <option value="22">Ti (التيتانيوم - 22)</option>
+                                <option value="23">V (الفاناديوم - 23)</option>
+                                <option value="24" selected>Cr (الكروم - 24) [شاذ]</option>
+                                <option value="25">Mn (المنجنيز - 25)</option>
+                                <option value="26">Fe (الحديد - 26)</option>
+                                <option value="27">Co (الكوبالت - 27)</option>
+                                <option value="28">Ni (النيكل - 28)</option>
+                                <option value="29">Cu (النحاس - 29) [شاذ]</option>
+                                <option value="30">Zn (الخارصين - 30)</option>
+                            </select>
+
+                            <label class="block text-xs font-bold text-slate-300">حالة التأكسد (Oxidation State):</label>
+                            <select id="mag-ox" onchange="updateMagneticCalc()" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-2.5 text-xs text-white focus:ring-2 focus:ring-emerald-500">
+                                <option value="0">عنصر متعادل (0)</option>
+                                <option value="2" selected>+2</option>
+                                <option value="3">+3</option>
+                                <option value="4">+4</option>
+                                <option value="6">+6</option>
+                                <option value="7">+7</option>
+                            </select>
+                        </div>
+
+                        <!-- Results Visualizer -->
+                        <div class="bg-black/40 border border-white/10 rounded-2xl p-4 space-y-3 font-mono text-xs md:col-span-2">
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span class="text-slate-400">التوزيع الإلكتروني للأيون:</span>
+                                <span id="res-config" class="font-bold text-emerald-400">[Ar] 4s0 3d4</span>
+                            </div>
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span class="text-slate-400">عدد الإلكترونات المفردة ($n$):</span>
+                                <span id="res-unpaired" class="font-bold text-amber-400">4 إلكترونات</span>
+                            </div>
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span class="text-slate-400">الخاصية المغناطيسية والعزم ($\mu$):</span>
+                                <span id="res-mag" class="font-bold text-emerald-300">بارامغناطيسي (العزم ≈ 4.9 BM)</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-1">
+                                <span class="text-slate-400">اللون المتوقع في المحلول المائي:</span>
+                                <span id="res-color" class="font-bold px-3 py-1 rounded-lg bg-emerald-600/30 border border-emerald-500 text-emerald-200">ملون (أخضر)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3d Grid & Uses -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-6">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 border-b pb-4">
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-800">بطاقات عناصر السلسلة الانتقالية الأولى (Sc ➔ Zn)</h2>
+                            <p class="text-xs text-slate-500">توزيعات شاذة، حالات التأكسد الشائعة، والاستخدامات التطبيقية</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="text" id="ch1-search" oninput="filterCh1Elements()" placeholder="ابحث عن عنصر أو استخدام..." class="px-3 py-1.5 rounded-xl border border-slate-200 text-xs w-60">
+                        </div>
+                    </div>
+
+                    <div id="ch1-elements-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                        <!-- Dynamic via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-TAB 1.2: Alloys -->
+            <div id="ch1-alloys" class="hidden space-y-6">
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-6">
+                    <div class="border-b pb-4">
+                        <h2 class="text-lg font-bold text-slate-800">مواصفات وأنواع السبائك (Alloys Masterclass)</h2>
+                        <p class="text-xs text-slate-500">مقارنة شاملة بين السبائك البينية، الاستبدالية، والبينفلزية مع شروط وتطبيقات كل نوع</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Interstitial -->
+                        <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 p-5 rounded-2xl space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="bg-amber-200 text-amber-900 text-xs font-black px-2.5 py-1 rounded-full">تداخل حاد</span>
+                                <span class="text-amber-700 font-bold text-sm">1. سبيكة بينية</span>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                تضاف ذرات عنصر **أصغر حجماً** في المسافات البينية للشبكة البلورية للفلز الأصلي.
+                            </p>
+                            <ul class="text-xs space-y-1.5 text-slate-700 list-disc list-inside bg-white/70 p-3 rounded-xl border border-amber-100">
+                                <li><strong>الهدف:</strong> إعاقة انزلاق الطبقات عند الطرق.</li>
+                                <li><strong>الخواص المتغيرة:</strong> تزداد الصلابة، درجة الانصهار، والتوصيل الكهربائي والمغناطيسية.</li>
+                                <li><strong>أشهر مثال:</strong> سبيكة الحديد الصلب (حديد + كربون).</li>
+                            </ul>
+                        </div>
+
+                        <!-- Substitutional -->
+                        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200 p-5 rounded-2xl space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="bg-blue-200 text-blue-900 text-xs font-black px-2.5 py-1 rounded-full">نفس الحجم</span>
+                                <span class="text-blue-700 font-bold text-sm">2. سبيكة استبدالية</span>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                تستبدل بعض ذرات الفلز الأصلي بذرات فلز آخر لها **نفس القطر والشكل البلوري والخواص الكيميائية**.
+                            </p>
+                            <ul class="text-xs space-y-1.5 text-slate-700 list-disc list-inside bg-white/70 p-3 rounded-xl border border-blue-100">
+                                <li><strong>الشروط:</strong> نصف قطر متماثل ($r_1 \approx r_2$).</li>
+                                <li><strong>الأمثلة الشهيرة:</strong></li>
+                                <li>- الحديد والكروم (الصلب الذي لا يصدأ / الاستانلس ستيل).</li>
+                                <li>- الذهب والنحاس / الحديد والنيكل.</li>
+                                <li>- النحاس الأصفر (نحاس + خارصين).</li>
+                            </ul>
+                        </div>
+
+                        <!-- Intermetallic -->
+                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 p-5 rounded-2xl space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="bg-purple-200 text-purple-900 text-xs font-black px-2.5 py-1 rounded-full">اتحاد كيميائي</span>
+                                <span class="text-purple-700 font-bold text-sm">3. سبيكة بينفلزية</span>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                تتكون نتيجة **اتحاد كيميائي** بين عناصر لا تقع في مجموعة واحدة بالجدول الدوري.
+                            </p>
+                            <ul class="text-xs space-y-1.5 text-slate-700 list-disc list-inside bg-white/70 p-3 rounded-xl border border-purple-100">
+                                <li><strong>الخواص:</strong> صيغها الكيميائية **لا تخضع لقوانين التكافؤ المعروفة**.</li>
+                                <li><strong>الأمثلة الشهيرة:</strong></li>
+                                <li>- السيمنتايت ($Fe_3C$).</li>
+                                <li>- سبيكة الديورالومين ($Al-Ni$ أو $Al-Cu$).</li>
+                                <li>- الرصاص والذهب ($Au_2Pb$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-TAB 1.3: Iron & Oxides Flowchart -->
+            <div id="ch1-iron" class="hidden space-y-6">
+                <!-- Iron Extraction -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-6">
+                    <div class="border-b pb-4">
+                        <h2 class="text-lg font-bold text-slate-800">خامات الحديد وخريطة الاختزال في الأفران</h2>
+                        <p class="text-xs text-slate-500">الهيماتيت، الماجنتيت، السدريت، والليمونيت مع تفاعلات الفرن العالي وفرن مدركس</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="bg-red-50 border border-red-200 p-4 rounded-2xl space-y-1">
+                            <h4 class="font-bold text-red-900 text-xs">1. الهيماتيت ($Fe_2O_3$)</h4>
+                            <p class="text-[11px] text-slate-600">أحمر داكن • سهل الاختزال • الخام الأساسي في الأفران.</p>
+                        </div>
+                        <div class="bg-slate-100 border border-slate-300 p-4 rounded-2xl space-y-1">
+                            <h4 class="font-bold text-slate-900 text-xs">2. الماجنتيت ($Fe_3O_4$)</h4>
+                            <p class="text-[11px] text-slate-600">أسود مغناطيسي • خواص مغناطيسية عالية.</p>
+                        </div>
+                        <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-2xl space-y-1">
+                            <h4 class="font-bold text-yellow-900 text-xs">3. الليمونيت ($2Fe_2O_3 \cdot 3H_2O$)</h4>
+                            <p class="text-[11px] text-slate-600">أصفر • سهل الاختزال عند التحميص بطرد الماء.</p>
+                        </div>
+                        <div class="bg-stone-100 border border-stone-300 p-4 rounded-2xl space-y-1">
+                            <h4 class="font-bold text-stone-900 text-xs">4. السدريت ($FeCO_3$)</h4>
+                            <p class="text-[11px] text-slate-600">رمادي مصفر • يتحول بالتحميص إلى $Fe_2O_3$.</p>
+                        </div>
+                    </div>
+
+                    <!-- Furnace Comparisons -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-5 rounded-2xl border border-slate-200 text-xs">
+                        <div class="space-y-2">
+                            <h3 class="font-black text-emerald-800">🔥 الفرن العالي (Blast Furnace):</h3>
+                            <p class="text-slate-700"><strong>العامل المختزل:</strong> أول أكسيد الكربون ($CO$) [المصدر: فحم الكوك].</p>
+                            <div class="bg-white p-2.5 rounded-xl border border-slate-200 font-mono text-[11px]">
+                                Fe2O3 + 3CO ➔ 2Fe + 3CO2  (عند أعلى من 700°C)
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-black text-teal-800">🔥 فرن مدركس (Midrex Furnace):</h3>
+                            <p class="text-slate-700"><strong>العامل المختزل:</strong> الغاز المائي ($CO + H_2$) [المصدر: الغاز الطبيعي / الميثان].</p>
+                            <div class="bg-white p-2.5 rounded-xl border border-slate-200 font-mono text-[11px]">
+                                2Fe2O3 + 3CO + 3H2 ➔ 4Fe + 3CO2 + 3H2O
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Iron Oxides Conversions Map -->
+                <div class="bg-slate-900 text-white rounded-3xl p-6 shadow-xl border border-emerald-500/20 space-y-6">
+                    <div class="border-b border-slate-800 pb-4">
+                        <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-3 py-1 rounded-full">أهم جزء في الباب الأول</span>
+                        <h2 class="text-lg font-black mt-2">خريطة التحويلات والتفاعلات بين أكاسيد الحديد ($Fe, FeO, Fe_3O_4, Fe_2O_3$)</h2>
+                        <p class="text-xs text-slate-400">تحكم درجات الحرارة ونوع الحمض المخفف أو المركز الساخن</p>
+                    </div>
+
+                    <!-- Flow Map Blocks -->
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 text-xs font-mono">
+                        <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 space-y-2">
+                            <span class="text-amber-400 font-bold">1. Fe (الحديد النقي)</span>
+                            <p class="text-slate-300 text-[11px] font-sans">يتفاعل مع الأحماض المخففة ويعطي ملح حديد ثنائي + غاز الهيدروجين (عامل مختزل).</p>
+                            <div class="text-[10px] text-emerald-400">Fe + 2HCl(dil) ➔ FeCl2 + H2</div>
+                            <div class="text-[10px] text-emerald-400">Fe + H2SO4(conc hot) ➔ FeSO4 + Fe2(SO4)3 + SO2 + H2O</div>
+                        </div>
+
+                        <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 space-y-2">
+                            <span class="text-slate-300 font-bold">2. FeO (أكسيد حديد ثنائي)</span>
+                            <p class="text-slate-300 text-[11px] font-sans">ينتج من اختزال الأكاسيد الأعلى عند (400 - 700°C). يتفاعل مع الأحماض المخففة.</p>
+                            <div class="text-[10px] text-emerald-400">FeO + H2SO4(dil) ➔ FeSO4 + H2O</div>
+                        </div>
+
+                        <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 space-y-2">
+                            <span class="text-indigo-400 font-bold">3. Fe3O4 (أكسيد مغناطيسي)</span>
+                            <p class="text-slate-300 text-[11px] font-sans">أكسيد مختلط ($FeO + Fe_2O_3$). يتفاعل مع الأحماض المركزة الساخنة ويعطي ملحين (ثنائي وثلاثي).</p>
+                            <div class="text-[10px] text-emerald-400">Fe3O4 + 4H2SO4(conc) ➔ FeSO4 + Fe2(SO4)3 + 4H2O</div>
+                        </div>
+
+                        <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 space-y-2">
+                            <span class="text-red-400 font-bold">4. Fe2O3 (أكسيد ثلاثي / هيماتيت)</span>
+                            <p class="text-slate-300 text-[11px] font-sans">أعلى حالة أكسدة (+3). يتفاعل فقط مع الأحماض المركزة الساخنة ويعطي ملح ثلاثي فقط.</p>
+                            <div class="text-[10px] text-emerald-400">Fe2O3 + 3H2SO4(conc) ➔ Fe2(SO4)3 + 3H2O</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             SECTION 2: CHAPTER 2 (QUALITATIVE ANALYSIS)
+             ========================================== -->
+        <section id="sec-ch2-qual" class="hidden space-y-8">
+            
+            <!-- Quick Filter Matrix -->
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-6">
+                <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 border-b pb-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-800">مصفوفة التحليل الوصفي (الأنيونات والكاتيونات)</h2>
+                        <p class="text-xs text-slate-500">اختر الكاشف الرئيسي لمعرفة الأنيونات المكتشفة والغازات والتجارب التأكيدية ورواسبها</p>
+                    </div>
+                    <!-- Quick Category Select -->
+                    <div class="flex flex-wrap gap-2 text-xs font-bold">
+                        <button onclick="filterAnionsGroup('all')" class="anion-btn bg-emerald-600 text-white px-3 py-1.5 rounded-xl">الكل</button>
+                        <button onclick="filterAnionsGroup('hcl')" class="anion-btn bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl hover:bg-slate-200">مجموعة HCl المخفف</button>
+                        <button onclick="filterAnionsGroup('h2so4')" class="anion-btn bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl hover:bg-slate-200">مجموعة H2SO4 المركز</button>
+                        <button onclick="filterAnionsGroup('bacl2')" class="anion-btn bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl hover:bg-slate-200">مجموعة BaCl2</button>
+                        <button onclick="filterAnionsGroup('cations')" class="anion-btn bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl hover:bg-slate-200">الكاتيونات (المجموعات Analytical)</button>
+                    </div>
+                </div>
+
+                <!-- Matrix Cards Container -->
+                <div id="anions-matrix-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Dynamic via JS -->
+                </div>
+            </div>
+
+            <!-- Precipitates & Solubility Rules Engine -->
+            <div class="bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950 text-white rounded-3xl p-6 shadow-xl border border-emerald-500/20 space-y-6">
+                <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 border-b border-slate-800 pb-4">
+                    <div>
+                        <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-3 py-1 rounded-full">المحرك الذهبي للرواسب</span>
+                        <h2 class="text-lg font-black mt-2">محرك البحث السريع لسلوك وتأثير الرواسب والغازات</h2>
+                    </div>
+                    <div class="w-full md:w-80 relative">
+                        <input type="text" id="sol-search" oninput="searchSolubilityEngine()" placeholder="ابحث باسم الراسب (مثل: AgCl, Al(OH)3, SO2)..." class="w-full bg-slate-800 border border-slate-700 text-xs px-4 py-2.5 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                </div>
+
+                <div id="sol-engine-cards" class="grid grid-cols-1 md:grid-cols-3 gap-4 font-sans text-xs">
+                    <!-- Dynamic Cards via JS -->
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             SECTION 3: CHAPTER 2 (QUANTITATIVE ANALYSIS & CALCULATOR)
+             ========================================== -->
+        <section id="sec-ch2-quant" class="hidden space-y-8">
+            
+            <!-- Titration & Mass Calculator -->
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-6">
+                <div class="border-b pb-4">
+                    <h2 class="text-lg font-bold text-slate-800">معمل التحليل الكمي والحسابات الكيميائية (Titration & Stoichiometry Lab)</h2>
+                    <p class="text-xs text-slate-500">حسابات المعايرة، نسبة النقاء، مسائل التطاير (ماء التبلر)، ومسائل الترسيب</p>
+                </div>
+
+                <!-- Interactive Tabs for Problem Types -->
+                <div class="flex flex-wrap gap-2 border-b pb-3 text-xs font-bold">
+                    <button onclick="showCalcMode('titration')" id="mode-btn-titration" class="calc-mode-btn bg-emerald-700 text-white px-4 py-2 rounded-xl">1. مسائل المعايرة والكتلة والنسبة المئوية</button>
+                    <button onclick="showCalcMode('volatilization')" id="mode-btn-volatilization" class="calc-mode-btn bg-slate-100 text-slate-700 px-4 py-2 rounded-xl hover:bg-slate-200">2. مسائل التطاير وماء التبلر (x H2O)</button>
+                    <button onclick="showCalcMode('precipitation')" id="mode-btn-precipitation" class="calc-mode-btn bg-slate-100 text-slate-700 px-4 py-2 rounded-xl hover:bg-slate-200">3. مسائل الترسيب والمقص الكيميائي</button>
+                </div>
+
+                <!-- Calculator Container 1: Titration -->
+                <div id="calc-panel-titration" class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+                    <div class="lg:col-span-2 bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4 text-xs">
+                        <h3 class="font-bold text-slate-800 border-b pb-2">بيانات المعايرة كاملة:</h3>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Acid Inputs -->
+                            <div class="bg-emerald-50/50 p-3.5 rounded-xl border border-emerald-100 space-y-2">
+                                <span class="font-black text-emerald-800 flex items-center gap-1">🧪 الحمض (Acid - a)</span>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <div>
+                                        <label class="block text-slate-500">Ma (Molar)</label>
+                                        <input type="number" id="p-ma" step="any" class="w-full p-2 rounded-lg border text-xs">
+                                    </div>
+                                    <div>
+                                        <label class="block text-slate-500">Va (mL)</label>
+                                        <input type="number" id="p-va" step="any" class="w-full p-2 rounded-lg border text-xs">
+                                    </div>
+                                    <div>
+                                        <label class="block text-slate-500">na (مولات)</label>
+                                        <input type="number" id="p-na" value="1" step="any" class="w-full p-2 rounded-lg border font-bold text-center text-xs">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Base Inputs -->
+                            <div class="bg-blue-50/50 p-3.5 rounded-xl border border-blue-100 space-y-2">
+                                <span class="font-black text-blue-800 flex items-center gap-1">🥛 القاعدة (Base - b)</span>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <div>
+                                        <label class="block text-slate-500">Mb (Molar)</label>
+                                        <input type="number" id="p-mb" step="any" class="w-full p-2 rounded-lg border text-xs">
+                                    </div>
+                                    <div>
+                                        <label class="block text-slate-500">Vb (mL)</label>
+                                        <input type="number" id="p-vb" step="any" class="w-full p-2 rounded-lg border text-xs">
+                                    </div>
+                                    <div>
+                                        <label class="block text-slate-500">nb (مولات)</label>
+                                        <input type="number" id="p-nb" value="1" step="any" class="w-full p-2 rounded-lg border font-bold text-center text-xs">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Extra Mass & Purity Inputs -->
+                        <div class="bg-slate-100 p-3.5 rounded-xl border border-slate-200 space-y-2">
+                            <span class="font-bold text-slate-700">خيارات متقدمة (حساب الكتلة والنسبة المئوية العينة غير النقية):</span>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-slate-500">الكتلة المولية للمادة المجهولة (g/mol)</label>
+                                    <input type="number" id="p-mw" placeholder="مثال: 40 لـ NaOH" class="w-full p-2 rounded-lg border text-xs">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-500">كتلة العينة غير النقية (g)</label>
+                                    <input type="number" id="p-sample-mass" placeholder="مثال: 0.5" class="w-full p-2 rounded-lg border text-xs">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="runTitrationSolver()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition text-xs shadow-md">
+                            احسب المجهول وقدم خطوات الحل الكاملة 🚀
+                        </button>
+                    </div>
+
+                    <!-- Display Steps Result -->
+                    <div class="bg-slate-900 text-white p-5 rounded-2xl shadow-lg border border-slate-800 space-y-3 font-mono text-xs">
+                        <span class="text-xs font-bold text-emerald-400 border-b border-slate-700 pb-2 block">خطوات ونتيجة المسألة:</span>
+                        <div id="titration-result-box" class="space-y-2 text-slate-300">
+                            <p class="text-slate-400">أدخل معطيات المعايرة واترك المجهول فارغاً للحساب تلقائياً.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Container 2: Volatilization (Water of Crystallization) -->
+                <div id="calc-panel-volatilization" class="hidden grid grid-cols-1 lg:grid-cols-2 gap-6 items-start text-xs">
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+                        <h3 class="font-bold text-slate-800 border-b pb-2">بيانات مسألة التطاير ($x H_2O$):</h3>
+                        
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-slate-600 mb-1">1. كتلة الملح المتدرت (قبل التسخين) (g):</label>
+                                <input type="number" id="vol-hydrated" placeholder="مثال: 2.69" class="w-full p-2.5 rounded-xl border">
+                            </div>
+                            <div>
+                                <label class="block text-slate-600 mb-1">2. كتلة الملح غير المتدرت (بعد التسخين والمثبوت) (g):</label>
+                                <input type="number" id="vol-anhydrous" placeholder="مثال: 1.61" class="w-full p-2.5 rounded-xl border">
+                            </div>
+                            <div>
+                                <label class="block text-slate-600 mb-1">3. الكتلة المولية للملح الجاف (g/mol):</label>
+                                <input type="number" id="vol-mw-salt" placeholder="مثال: 161 لـ CuSO4" class="w-full p-2.5 rounded-xl border">
+                            </div>
+                        </div>
+
+                        <button onclick="runVolatilizationSolver()" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 rounded-xl transition text-xs shadow-md">
+                            احسب عدد مولات ماء التبلر ($x$) والصيغة 💧
+                        </button>
+                    </div>
+
+                    <!-- Output Box Volatilization -->
+                    <div class="bg-slate-900 text-white p-5 rounded-2xl shadow-lg border border-slate-800 space-y-3 font-mono">
+                        <span class="text-xs font-bold text-teal-400 border-b border-slate-700 pb-2 block">خطوات حساب ماء التبلر:</span>
+                        <div id="volatilization-result-box" class="space-y-2 text-slate-300">
+                            <p class="text-slate-400">أدخل الكتل والكتلة المولية لحساب عدد مولات الماء $x$.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Container 3: Precipitation Stoichiometry -->
+                <div id="calc-panel-precipitation" class="hidden bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4 text-xs">
+                    <h3 class="font-bold text-slate-800 border-b pb-2">طريقة المقص وحساب كتلة الراسب (Precipitation Calculations):</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        في مسائل الترسيب، استخدم دايماً علاقة <strong>(مولات المادة المعلومة ➔ مولات الراسب)</strong> مع الكتلة المولية لكل طرف:
+                    </p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2 font-mono text-[11px]">
+                        <div class="text-emerald-700 font-bold">الكتلة الناتجة (g) = (كتلة المادة المعلومة × الكتلة المولية للراسب × معامل الراسب) / (الكتلة المولية للمادة المعلومة × معامل المعلوم)</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 4: PRACTICE & FLASHCARDS
+             ========================================== -->
+        <section id="sec-practice" class="hidden space-y-8">
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 max-w-4xl mx-auto space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-800">بنك التحدي الشامل والتفكير السريع</h2>
+                        <p class="text-xs text-slate-500">أسئلة قياسية ومترابطة لضمان التفوق في البابين الأول والثاني</p>
+                    </div>
+                    <span id="p-score-badge" class="bg-emerald-100 text-emerald-800 font-black text-xs px-3.5 py-1.5 rounded-full">النتيجة: 0 / 0</span>
+                </div>
+
+                <!-- Card Quiz Area -->
+                <div id="p-quiz-box" class="space-y-6">
+                    <div class="flex justify-between text-xs text-slate-500 font-bold">
+                        <span id="p-question-num">السؤال 1 من 8</span>
+                        <span id="p-question-cat" class="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-md">الباب الأول</span>
+                    </div>
+
+                    <h3 id="p-question-text" class="text-base font-bold text-slate-800 leading-relaxed">
+                        --
+                    </h3>
+
+                    <div id="p-options-container" class="grid grid-cols-1 gap-3">
+                        <!-- Options injected by JS -->
+                    </div>
+
+                    <!-- Explanation -->
+                    <div id="p-explanation-box" class="hidden bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-xs text-emerald-950 leading-relaxed">
+                        <!-- Explanation text -->
+                    </div>
+
+                    <div class="flex justify-end pt-2">
+                        <button id="p-next-btn" onclick="nextPracticeQuestion()" class="hidden bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-xl shadow text-xs transition">
+                            السؤال التالي <i class="fa-solid fa-arrow-left mr-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p class="font-bold text-slate-200">منصة مراجعة الكيمياء الشاملة للثانوية العامة | الأبواب (1 & 2)</p>
+            <p class="text-slate-500">تم التجهيز والتصميم للربط الذهني السريع والتفوق المباشر 🌟</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DATA & LOGIC -->
+    <script>
+        /* ----------------------------------------------------
+           DATA: CHAPTER 1 ELEMENTS
+        ---------------------------------------------------- */
+        const ch1ElementsData = [
+            { num: 21, symbol: "Sc", name: "السكانديوم", config: "[Ar] 4s² 3d¹", ox: "+3 فقط", key: "خفيف وقوي جداً", uses: "طائرات الميج المقاتلة (سبيكة مع Al) • مصابيح أباطرة الزئبق للتصوير السينمائي الليلي.", color: "غير ملون (d0)", cat: "aviation" },
+            { num: 22, symbol: "Ti", name: "التيتانيوم", config: "[Ar] 4s² 3d²", ox: "+2, +3, +4", key: "صديق الجسم والمركبات", uses: "زراعة الأسنان والمفاصل الصناعية (لا يرفضه الجسم) • مركبات الفضاء والطائرات (مع Al) • TiO2 للوقاية من الشمس.", color: "ملون (+2,+3)", cat: "medical" },
+            { num: 23, symbol: "V", name: "الفاناديوم", config: "[Ar] 4s² 3d³", ox: "+2, +3, +4, +5", key: "قساوة ومطاطية", uses: "زنبركات السيارات (سبيكة مع الصلب لمقاومة التآكل) • أكسيد الفاناديوم V2O5 عامل حفاز لتحضير H2SO4 وصناعة السيراميك.", color: "ملون", cat: "industry" },
+            { num: 24, symbol: "Cr", name: "الكروم [شاذ]", config: "[Ar] 4s¹ 3d⁵", ox: "+2, +3, +6", key: "مقاوم الصدأ والأصباغ", uses: "طلاء المعادن ودباغة الجلود (طبقة أكسيد غير مسامية) • Cr2O3 أصباغ • K2Cr2O7 مادة مؤكسدة برتقالية تتحول للأخضر.", color: "ملون (Cr3+ أخضر)", cat: "medical" },
+            { num: 25, symbol: "Mn", name: "المنجنيز", config: "[Ar] 4s² 3d⁵", ox: "+2, +3, +4, +6, +7", key: "هش في نفسه جامد بغيره", uses: "خطوط السكك الحديدية (مع Fe) • عبوات المشروبات (مع Al) • MnO2 عمود جاف • KMnO4 مادة مطهرة ومؤكسدة بنفسجية.", color: "ملون", cat: "industry" },
+            { num: 26, symbol: "Fe", name: "الحديد", config: "[Ar] 4s² 3d⁶", ox: "+2, +3, +6", key: "عصب الصناعات والخرسانة", uses: "الخرسانة المسلحة وأبراج الكهرباء والسكاكين • حفاز في تحضير النشادر (هابر-بوش) والغاز المائي (فيشر-تروبش).", color: "ملون (Fe2+ أخضر / Fe3+ بني)", cat: "catalyst" },
+            { num: 27, symbol: "Co", name: "الكوبالت", config: "[Ar] 4s² 3d⁷", ox: "+2, +3, +4", key: "مغناطيس ونظائر", uses: "المغناطيسيات والبطاريات الجافة الحديثة • Co-60 يصدر أشعة جاما لحفظ الأغذية والكشف عن الأورام.", color: "ملون", cat: "industry" },
+            { num: 28, symbol: "Ni", name: "النيكل", config: "[Ar] 4s² 3d⁸", ox: "+2, +3, +4", key: "هدرجة وبطاريات", uses: "هدرجة الزيوت (حفاز مجزأ) • سبيكة Ni-Cr لملفات التسخين • بطاريات النيكل-كادميوم القابلة للشحن.", color: "ملون (أخضر)", cat: "catalyst" },
+            { num: 29, symbol: "Cu", name: "النحاس [شاذ]", config: "[Ar] 4s¹ 3d¹⁰", ox: "+1, +2", key: "كهرباء وعملات", uses: "كابلات الكهرباء وسبائك العملات النقدية • محلول فهلنج للكشف عن الجلوكوز (يتحول من الأزرق للبرتقالي).", color: "ملون في Cu2+", cat: "industry" },
+            { num: 30, symbol: "Zn", name: "الخارصين", config: "[Ar] 4s² 3d¹⁰", ox: "+2 فقط", key: "درع الجلفنة والحماية", uses: "جلفنة المعادن لحمايتها من الصدأ • ZnO دهانات ومطاط ومستحضرات تجميل • ZnS شاشات الأشعة السينية والمواد المضيئة.", color: "غير ملون (d10)", cat: "medical" }
+        ];
+
+        /* ----------------------------------------------------
+           DATA: CHAPTER 2 ANIONS & CATIONS MATRIX
+        ---------------------------------------------------- */
+        const anionsMatrixData = [
+            { group: "hcl", name: "1. الكربونات (CO3²⁻) والبيكربونات (HCO3⁻)", reagent: "HCl المخفف", gas: "غاز ثاني أكسيد الكربون CO2 (عديم اللون)", effect: "يعكر ماء الجير الرائق (Ca(OH)2) عند مروره لفترة قصيرة (ST).", test: "محلول كبريتات المغنيسيوم MgSO4 ➔ راسب أبيض على البارد مع CO3²⁻، وعلى الساخن بعد التسخين مع HCO3⁻." },
+            { group: "hcl", name: "2. الكبريتيت (SO3²⁻)", reagent: "HCl المخفف", gas: "غاز ثاني أكسيد الكبريت SO2 (رائحة نفاذة)", effect: "يخضر ورقة مبللة بثاني كرومات البوتاسيوم K2Cr2O7 البرتقالية المحمضة، ويزيل لون KMnO4 البنفسجية.", test: "محلول نترات الفضة AgNO3 ➔ راسب أبيض يسود بالتسخين (Ag2SO3)." },
+            { group: "hcl", name: "3. الكبريتيد (S²⁻)", reagent: "HCl المخفف", gas: "غاز كبريتيد الهيدروجين H2S (رائحة كريهة)", effect: "يسود ورقة مبللة بمحلول أسيتات الرصاص الثنائي (Pb(CH3COO)2) بسبب تكون PbS الأسود.", test: "محلول نترات الفضة AgNO3 ➔ راسب أسود من كبريتيد الفضة (Ag2S)." },
+            { group: "hcl", name: "4. النيتريت (NO2⁻)", reagent: "HCl المخفف", gas: "غاز أكسيد النيكريك NO (عديم اللون)", effect: "يتحول عند فوهة الأنبوبة إلى أبخرة بني محمر من NO2 باكتساب أكسجين الهواء.", test: "محلول برمنجنات البوتاسيوم KMnO4 المحمضة ➔ يزول اللون البنفسجي للبرمنجنات." },
+            { group: "h2so4", name: "5. الكلوريد (Cl⁻)", reagent: "H2SO4 المركز الساخن", gas: "غاز كلوريد الهيدروجين HCl (عديم اللون)", effect: "يكون سحباً بيضاء عند تعرضه لساق مبللة بمحلول النشادر (NH3) لتكون NH4Cl.", test: "محلول نترات الفضة AgNO3 ➔ راسب أبيض (AgCl) يذوب بسرعة في النشادر المركز." },
+            { group: "h2so4", name: "6. البروميد (Br⁻)", reagent: "H2SO4 المركز الساخن", gas: "أبخرة البروم البرتقالية الحمراء (Br2)", effect: "تسبب تصفير ورقة مبللة بمحلول النشا.", test: "محلول نترات الفضة AgNO3 ➔ راسب أبيض مصفر (AgBr) يذوب ببطء في النشادر." },
+            { group: "h2so4", name: "7. اليوديد (I⁻)", reagent: "H2SO4 المركز الساخن", gas: "أبخرة اليود البنفسجية (I2)", effect: "تزرق ورقة مبللة بمحلول النشا.", test: "محلول نترات الفضة AgNO3 ➔ راسب أصفر (AgI) لا يذوب في محلول النشادر." },
+            { group: "h2so4", name: "8. النترات (NO3⁻)", reagent: "H2SO4 المركز الساخن", gas: "أبخرة بني محمر من NO2", effect: "تزداد الأبخرة كثافة عند إضافة خراطة النحاس (Cu).", test: "تجربة الحلقة البنية (FeSO4 حديثة + H2SO4 مركز بحرص على الجدار) ➔ تتكون حلقة بنية تزول بالرج أو التسخين." },
+            { group: "bacl2", name: "9. الكبريتات (SO4²⁻)", reagent: "محلول كلوريد الباريوم BaCl2", gas: "--", effect: "يتكون راسب أبيض فوراً من كبريتات الباريوم (BaSO4).", test: "الراسب الأبيض (BaSO4) لا يذوب في حمض HCl المخفف." },
+            { group: "bacl2", name: "10. الفوسفات (PO4³⁻)", reagent: "محلول كلوريد الباريوم BaCl2", gas: "--", effect: "يتكون راسب أبيض من فوسفات الباريوم Ba3(PO4)2.", test: "الراسب الأبيض يذوب في حمض HCl المخفف (فرق جوهري عن الكبريتات)." },
+            { group: "cations", name: "11. كاتيون الألومنيوم (Al³⁺)", reagent: "محلول هيدروكسيد الأمونيوم NH4OH", gas: "--", effect: "راسب أبيض جيلاتيني من Al(OH)3.", test: "الراسب يذوب في الزيادة من NaOH (لتكون ميتا ألومينات الصوديوم NaAlO2) ولكن لا يذوب في زيادة NH4OH." },
+            { group: "cations", name: "12. كاتيون الحديد الثنائي (Fe²⁺)", reagent: "محلول NH4OH أو NaOH", gas: "--", effect: "راسب أبيض يتحول لأبيض مخضر بالهواء من Fe(OH)2.", test: "يذوب الراسب في الأحماض." },
+            { group: "cations", name: "13. كاتيون الحديد الثلاثي (Fe³⁺)", reagent: "محلول NH4OH أو NaOH", gas: "--", effect: "راسب بني محمر جيلاتيني من Fe(OH)3.", test: "لا يذوب في الزيادة من NaOH (فرق حاسم عن Al3+)." }
+        ];
+
+        /* ----------------------------------------------------
+           DATA: SOLUBILITY & PRECIPITATES ENGINE
+        ---------------------------------------------------- */
+        const solubilityData = [
+            { name: "كلوريد الفضة (AgCl)", color: "أبيض", sol: "لا يذوب في الماء ، يذوب بسرعة في محلول النشادر المركز (NH3)." },
+            { name: "بروميد الفضة (AgBr)", color: "أبيض مصفر", sol: "لا يذوب في الماء ، يذوب ببطء في محلول النشادر المركز." },
+            { name: "يوديد الفضة (AgI)", color: "أصفر", sol: "لا يذوب في الماء ، لا يذوب إطلاقاً في محلول النشادر (مستفز)." },
+            { name: "فوسفات الفضة (Ag3PO4)", color: "أصفر", sol: "لا يذوب في الماء ، يذوب في محلول النشادر وفي حمض النيتريك HNO3." },
+            { name: "هيدروكسيد الألومنيوم (Al(OH)3)", color: "أبيض جيلاتيني", sol: "راسب يذوب في الزيادة من هيدروكسيد الصوديوم NaOH لتكون ميتا ألومينات الصوديوم الذائبة." },
+            { name: "كبريتات الباريوم (BaSO4)", color: "أبيض", sol: "راسب صلب لا يذوب في الماء ولا يذوب في حمض HCl المخفف." },
+            { name: "فوسفات الباريوم (Ba3(PO4)2)", color: "أبيض", sol: "راسب يذوب في حمض HCl المخفف." },
+            { name: "كبريتيد الرصاص (PbS)", color: "أسود", sol: "راسب أسود ينتج من تفاعل H2S مع أسيتات الرصاص." },
+            { name: "قواعد الملوك المطلقة", color: "ذوبان 100%", sol: "جميع أملاح الصوديوم Na+، البوتاسيوم K+، الأمونيوم NH4+، النترات NO3-، والبيكربونات HCO3- تذوب دائماً بلا استثناء!" }
+        ];
+
+        /* ----------------------------------------------------
+           DATA: PRACTICE QUESTIONS
+        ---------------------------------------------------- */
+        const practiceQuestions = [
+            {
+                cat: "الباب الأول",
+                q: "عنصر انتقالي X من السلسلة الأولى، حالة تأكسده +3 تجعل تجمعه الإلكتروني يحتوي على إلكترونين مفردين فقط في المستوى الفرعي 3d. ما هو العنصر X واستخدامه؟",
+                options: [
+                    "التيتانيوم (Ti) - زراعة الأسنان والمفاصل",
+                    "الفاناديوم (V) - زنبركات السيارات",
+                    "الكروم (Cr) - طلاء المعادن",
+                    "المنجنيز (Mn) - خطوط السكك الحديدية"
+                ],
+                correct: 1,
+                exp: "التفسير: الأيون X3+ يحتوي على 3d2. إذن العنصر المتعادل يحتوي على (4s2 3d3) وهو الفاناديوم (V 23)، والذي يستخدم في زنبركات السيارات."
+            },
+            {
+                cat: "الباب الأول - السبائك",
+                q: "أي مما يلي يصف سبيكة السيمنتايت (Fe3C) بشكل صحيح؟",
+                options: [
+                    "سبيكة بينية تتكون عن طريق خلت الفيزيائي دون تفاعل",
+                    "سبيكة استبدالية تتشابه ذراتها في نصف القطر",
+                    "سبيكة بينفلزية تنشأ عن اتحاد كيميائي ولا تخضع لقوانين التكافؤ",
+                    "سبيكة مرنة تذوب بالكامل في الأحماض المخففة"
+                ],
+                correct: 2,
+                exp: "التفسير: السيمنتايت Fe3C سبيكة بينفلزية ناتجة عن اتحاد كيميائي حقيقي وصيغتها لا تخضع لقوانين التكافؤ العادية."
+            },
+            {
+                cat: "الباب الثاني - التحليل الوصفي",
+                q: "عند إضافة محلول نترات الفضة AgNO3 إلى ملحين X و Y، تكون راسب أصفر في الحالتين. وعند إضافة محلول النشادر المركّز ذاب الراسب في حالة X ولم يذب في حالة Y. الملحان هما:",
+                options: [
+                    "X هو كلوريد، Y هو بروميد",
+                    "X هو فوسفات، Y هو يوديد",
+                    "X هو يوديد، Y هو فوسفات",
+                    "X هو كبريتيد، Y هو كبريتيت"
+                ],
+                correct: 1,
+                exp: "التفسير: كلا الراسبين أصفر (فوسفات الفضة يذوب في النشادر = X، ويوديد الفضة لا يذوب في النشادر = Y)."
+            },
+            {
+                cat: "الباب الثاني - التحليل الكمي",
+                q: "تمت معايرة 20 mL من محلول NaOH تركيزه 0.1 M مع حمض H2SO4 تركيزه 0.1 M. ما هو حجم الحمض المستهلك تماماً للوصول للنقطة التكافؤ؟",
+                options: [
+                    "10 mL",
+                    "20 mL",
+                    "40 mL",
+                    "5 mL"
+                ],
+                correct: 0,
+                exp: "التفسير: التفاعل H2SO4 + 2NaOH ➔ na=1, nb=2. بتطبيق (Ma*Va)/1 = (Mb*Vb)/2 ➔ (0.1 * Va)/1 = (0.1 * 20)/2 ➔ Va = 10 mL."
+            }
+        ];
+
+        let practiceIndex = 0;
+        let practiceScore = 0;
+
+        /* ----------------------------------------------------
+           CORE APP INITIALIZATION
+        ---------------------------------------------------- */
+        window.onload = function() {
+            renderCh1Elements(ch1ElementsData);
+            renderAnionsMatrix(anionsMatrixData);
+            renderSolubilityEngine(solubilityData);
+            updateMagneticCalc();
+            loadPracticeQuestion();
+        };
+
+        // Navigation Switcher
+        function showSection(secId) {
+            document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+
+            document.getElementById(secId).classList.remove('hidden');
+            
+            if(secId === 'sec-ch1') document.getElementById('tab-ch1').classList.add('active');
+            if(secId === 'sec-ch2-qual') document.getElementById('tab-ch2-qual').classList.add('active');
+            if(secId === 'sec-ch2-quant') document.getElementById('tab-ch2-quant').classList.add('active');
+            if(secId === 'sec-practice') document.getElementById('tab-practice').classList.add('active');
+        }
+
+        // Sub-Tab Switcher Ch 1
+        function showCh1Sub(subId) {
+            document.getElementById('ch1-elements').classList.add('hidden');
+            document.getElementById('ch1-alloys').classList.add('hidden');
+            document.getElementById('ch1-iron').classList.add('hidden');
+
+            document.querySelectorAll('.sub-tab').forEach(b => b.classList.remove('active-sub'));
+
+            document.getElementById(subId).classList.remove('hidden');
+
+            if(subId === 'ch1-elements') document.getElementById('sub-elements').classList.add('active-sub');
+            if(subId === 'ch1-alloys') document.getElementById('sub-alloys').classList.add('active-sub');
+            if(subId === 'ch1-iron') document.getElementById('sub-iron').classList.add('active-sub');
+        }
+
+        /* ----------------------------------------------------
+           CH1 LOGIC & MAGNETIC CALCULATOR
+        ---------------------------------------------------- */
+        function renderCh1Elements(arr) {
+            const grid = document.getElementById('ch1-elements-grid');
+            grid.innerHTML = arr.map(el => `
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 hover:border-emerald-500 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2 border-b border-slate-200 pb-2">
+                            <span class="font-black text-slate-800 text-sm">${el.name} (${el.symbol})</span>
+                            <span class="text-[10px] font-bold bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full">z=${el.num}</span>
+                        </div>
+                        <div class="text-[11px] font-mono text-emerald-700 font-bold mb-1">${el.config}</div>
+                        <div class="text-[10px] bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded inline-block mb-2 font-bold">💡 ${el.key}</div>
+                        <p class="text-[11px] text-slate-600 leading-relaxed font-medium mb-3">${el.uses}</p>
+                    </div>
+                    <div class="text-[10px] border-t pt-2 text-slate-500 flex justify-between">
+                        <span>التأكسد: ${el.ox}</span>
+                        <span class="font-bold text-amber-600">${el.color}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCh1Elements() {
+            const q = document.getElementById('ch1-search').value.toLowerCase();
+            const filtered = ch1ElementsData.filter(el => 
+                el.name.toLowerCase().includes(q) || 
+                el.symbol.toLowerCase().includes(q) || 
+                el.uses.toLowerCase().includes(q) ||
+                el.key.toLowerCase().includes(q)
+            );
+            renderCh1Elements(filtered);
+        }
+
+        function updateMagneticCalc() {
+            const z = parseInt(document.getElementById('mag-element').value);
+            const ox = parseInt(document.getElementById('mag-ox').value);
+
+            // Total electrons in 3d series: z - 18
+            let totalD = (z - 18) - ox;
+            
+            // Correction for Cr (24) and Cu (29) neutrals
+            if (ox === 0) {
+                if (z === 24) totalD = 6; // 4s1 3d5 -> 6 valance
+                else if (z === 29) totalD = 11; // 4s1 3d10 -> 11 valance
+            }
+
+            let sElectrons = 0;
+            let dElectrons = 0;
+
+            if (ox === 0) {
+                if (z === 24) { sElectrons = 1; dElectrons = 5; }
+                else if (z === 29) { sElectrons = 1; dElectrons = 10; }
+                else { sElectrons = 2; dElectrons = z - 20; }
+            } else {
+                sElectrons = 0;
+                dElectrons = (z - 18) - ox;
+            }
+
+            if (dElectrons < 0) dElectrons = 0;
+            if (dElectrons > 10) dElectrons = 10;
+
+            // Unpaired counting in d subshell
+            let unpaired = 0;
+            if (dElectrons <= 5) unpaired = dElectrons;
+            else unpaired = 10 - dElectrons;
+
+            // Magnetic moment = sqrt(n*(n+2))
+            const mu = Math.sqrt(unpaired * (unpaired + 2)).toFixed(2);
+
+            document.getElementById('res-config').innerText = `[Ar] 4s${sElectrons} 3d${dElectrons}`;
+            document.getElementById('res-unpaired').innerText = `${unpaired} إلكترون مفرد`;
+
+            const magBox = document.getElementById('res-mag');
+            const colorBox = document.getElementById('res-color');
+
+            if (unpaired > 0) {
+                magBox.innerText = `بارامغناطيسي (العزم ≈ ${mu} BM)`;
+                magBox.className = "font-bold text-emerald-400";
+
+                colorBox.innerText = `ملون (يحتوي إلكترونات مفردة d${dElectrons})`;
+                colorBox.className = "font-bold px-3 py-1 rounded-lg bg-emerald-600/30 border border-emerald-500 text-emerald-200";
+            } else {
+                magBox.innerText = `ديامغناطيسي (العزم = 0 BM)`;
+                magBox.className = "font-bold text-slate-400";
+
+                colorBox.innerText = `غير ملون (d0 أو d10)`;
+                colorBox.className = "font-bold px-3 py-1 rounded-lg bg-slate-700 border border-slate-600 text-slate-300";
+            }
+        }
+
+        /* ----------------------------------------------------
+           CH2 MATRIX & SOLUBILITY ENGINE LOGIC
+        ---------------------------------------------------- */
+        function renderAnionsMatrix(data) {
+            const grid = document.getElementById('anions-matrix-grid');
+            grid.innerHTML = data.map(item => `
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 shadow-sm hover:border-emerald-500 transition space-y-2">
+                    <div class="flex justify-between items-center border-b pb-2">
+                        <h4 class="font-black text-slate-800 text-xs">${item.name}</h4>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">${item.reagent}</span>
+                    </div>
+                    <div class="text-[11px] text-slate-600 space-y-1">
+                        <p><strong>💨 الغاز/الأبخرة:</strong> ${item.gas}</p>
+                        <p class="text-emerald-700"><strong>🔍 التأثير على الورق:</strong> ${item.effect}</p>
+                        <p class="text-amber-800 bg-amber-50 p-2 rounded-lg border border-amber-100 mt-2"><strong>🧪 التجربة التأكيدية:</strong> ${item.test}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterAnionsGroup(grp) {
+            document.querySelectorAll('.anion-btn').forEach(b => {
+                b.classList.remove('bg-emerald-600', 'text-white');
+                b.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            event.target.classList.remove('bg-slate-100', 'text-slate-700');
+            event.target.classList.add('bg-emerald-600', 'text-white');
+
+            if (grp === 'all') {
+                renderAnionsMatrix(anionsMatrixData);
+            } else {
+                const filtered = anionsMatrixData.filter(i => i.group === grp);
+                renderAnionsMatrix(filtered);
+            }
+        }
+
+        function renderSolubilityEngine(data) {
+            const grid = document.getElementById('sol-engine-cards');
+            grid.innerHTML = data.map(i => `
+                <div class="bg-slate-800 border border-slate-700 p-4 rounded-2xl space-y-2">
+                    <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+                        <span class="font-bold text-emerald-400 text-xs">${i.name}</span>
+                        <span class="text-[10px] bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded-full">${i.color}</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-sans">${i.sol}</p>
+                </div>
+            `).join('');
+        }
+
+        function searchSolubilityEngine() {
+            const val = document.getElementById('sol-search').value.toLowerCase();
+            const filtered = solubilityData.filter(i => 
+                i.name.toLowerCase().includes(val) || 
+                i.sol.toLowerCase().includes(val) || 
+                i.color.toLowerCase().includes(val)
+            );
+            renderSolubilityEngine(filtered);
+        }
+
+        /* ----------------------------------------------------
+           CH2 QUANTITATIVE SOLVER LOGIC
+        ---------------------------------------------------- */
+        function showCalcMode(mode) {
+            document.getElementById('calc-panel-titration').classList.add('hidden');
+            document.getElementById('calc-panel-volatilization').classList.add('hidden');
+            document.getElementById('calc-panel-precipitation').classList.add('hidden');
+
+            document.querySelectorAll('.calc-mode-btn').forEach(b => {
+                b.classList.remove('bg-emerald-700', 'text-white');
+                b.classList.add('bg-slate-100', 'text-slate-700');
+            });
+
+            document.getElementById(`calc-panel-${mode}`).classList.remove('hidden');
+            document.getElementById(`mode-btn-${mode}`).classList.remove('bg-slate-100', 'text-slate-700');
+            document.getElementById(`mode-btn-${mode}`).classList.add('bg-emerald-700', 'text-white');
+        }
+
+        function runTitrationSolver() {
+            const Ma = parseFloat(document.getElementById('p-ma').value);
+            const Va = parseFloat(document.getElementById('p-va').value);
+            const na = parseFloat(document.getElementById('p-na').value) || 1;
+
+            const Mb = parseFloat(document.getElementById('p-mb').value);
+            const Vb = parseFloat(document.getElementById('p-vb').value);
+            const nb = parseFloat(document.getElementById('p-nb').value) || 1;
+
+            const mw = parseFloat(document.getElementById('p-mw').value);
+            const sampleMass = parseFloat(document.getElementById('p-sample-mass').value);
+
+            const out = document.getElementById('titration-result-box');
+
+            let emptyCount = 0;
+            if (isNaN(Ma)) emptyCount++;
+            if (isNaN(Va)) emptyCount++;
+            if (isNaN(Mb)) emptyCount++;
+            if (isNaN(Vb)) emptyCount++;
+
+            if (emptyCount !== 1) {
+                out.innerHTML = `<p class="text-rose-400">⚠️ يرجى ترك قيمة واحدة فقط فارغة من (Ma, Va, Mb, Vb) ليتم حسابها مباشرة.</p>`;
+                return;
+            }
+
+            let calcVal = 0;
+            let label = "";
+
+            if (isNaN(Ma)) { calcVal = (Mb * Vb * na) / (nb * Va); label = "Ma (تركيز الحمض)"; }
+            else if (isNaN(Va)) { calcVal = (Mb * Vb * na) / (nb * Ma); label = "Va (حجم الحمض mL)"; }
+            else if (isNaN(Mb)) { calcVal = (Ma * Va * nb) / (na * Vb); label = "Mb (تركيز القاعدة)"; }
+            else if (isNaN(Vb)) { calcVal = (Ma * Va * nb) / (na * Mb); label = "Vb (حجم القاعدة mL)"; }
+
+            let html = `
+                <div class="text-emerald-300 font-bold mb-2">🎉 القيمة المجهولة:</div>
+                <div class="text-base text-white font-black bg-emerald-950 p-2.5 rounded-xl border border-emerald-700 mb-3">
+                    ${label} = ${calcVal.toFixed(3)}
+                </div>
+            `;
+
+            // Mass & Purity extra calculation
+            if (!isNaN(mw)) {
+                // Moles = M * V(L)
+                let moles = 0;
+                if (!isNaN(Mb) && !isNaN(Vb)) moles = Mb * (Vb / 1000);
+                else if (!isNaN(Ma) && !isNaN(Va)) moles = Ma * (Va / 1000);
+
+                const pureMass = moles * mw;
+                html += `<p class="text-slate-300">⚖️ كتلة المادة النقية = ${pureMass.toFixed(3)} جم</p>`;
+
+                if (!isNaN(sampleMass) && sampleMass > 0) {
+                    const percentage = (pureMass / sampleMass) * 100;
+                    html += `<p class="text-amber-300 font-bold">📊 النسبة المئوية للمادة في العينة = ${percentage.toFixed(2)}%</p>`;
+                }
+            }
+
+            out.innerHTML = html;
+        }
+
+        function runVolatilizationSolver() {
+            const hydrated = parseFloat(document.getElementById('vol-hydrated').value);
+            const anhydrous = parseFloat(document.getElementById('vol-anhydrous').value);
+            const mwSalt = parseFloat(document.getElementById('vol-mw-salt').value);
+
+            const out = document.getElementById('volatilization-result-box');
+
+            if (isNaN(hydrated) || isNaN(anhydrous) || isNaN(mwSalt) || hydrated <= anhydrous) {
+                out.innerHTML = `<p class="text-rose-400">⚠️ يرجى إدخال قيم صحيحة (كتلة المتدرت يجب أن تكون أكبر من الجاف).</p>`;
+                return;
+            }
+
+            const waterMass = hydrated - anhydrous;
+            const molesSalt = anhydrous / mwSalt;
+            const molesWater = waterMass / 18;
+
+            const x = molesWater / molesSalt;
+
+            out.innerHTML = `
+                <div class="space-y-2 text-xs">
+                    <p class="text-teal-300">1. كتلة ماء التبلر المتطاير = ${waterMass.toFixed(3)} جم</p>
+                    <p class="text-teal-300">2. عدد مولات الملح الجاف = ${molesSalt.toFixed(4)} مول</p>
+                    <p class="text-teal-300">3. عدد مولات الماء = ${molesWater.toFixed(4)} مول</p>
+                    <div class="text-sm text-white font-black bg-teal-950 p-3 rounded-xl border border-teal-700 mt-2">
+                        💡 عدد مولات ماء التبلر (x) = ${Math.round(x)} (الصيغة: Salt · ${Math.round(x)}H₂O)
+                    </div>
+                </div>
+            `;
+        }
+
+        /* ----------------------------------------------------
+           PRACTICE QUIZ LOGIC
+        ---------------------------------------------------- */
+        function loadPracticeQuestion() {
+            const q = practiceQuestions[practiceIndex];
+            document.getElementById('p-question-num').innerText = `السؤال ${practiceIndex + 1} من ${practiceQuestions.length}`;
+            document.getElementById('p-question-cat').innerText = q.cat;
+            document.getElementById('p-question-text').innerText = q.q;
+
+            const optBox = document.getElementById('p-options-container');
+            optBox.innerHTML = q.options.map((opt, i) => `
+                <button onclick="checkPracticeAnswer(${i})" class="p-opt-btn text-right w-full bg-slate-50 hover:bg-slate-100 border border-slate-200 p-3 rounded-xl text-xs font-bold text-slate-800 transition flex items-center justify-between">
+                    <span>${opt}</span>
+                    <i class="fa-regular fa-circle text-slate-300"></i>
+                </button>
+            `).join('');
+
+            document.getElementById('p-explanation-box').classList.add('hidden');
+            document.getElementById('p-next-btn').classList.add('hidden');
+        }
+
+        function checkPracticeAnswer(selected) {
+            const q = practiceQuestions[practiceIndex];
+            const btns = document.querySelectorAll('.p-opt-btn');
+
+            btns.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === q.correct) {
+                    btn.className = "text-right w-full bg-emerald-100 border border-emerald-500 p-3 rounded-xl text-xs font-bold text-emerald-950 flex items-center justify-between";
+                } else if (idx === selected) {
+                    btn.className = "text-right w-full bg-rose-100 border border-rose-500 p-3 rounded-xl text-xs font-bold text-rose-950 flex items-center justify-between";
+                }
+            });
+
+            if (selected === q.correct) {
+                practiceScore++;
+            }
+
+            document.getElementById('p-score-badge').innerText = `النتيجة: ${practiceScore} / ${practiceQuestions.length}`;
+
+            const expBox = document.getElementById('p-explanation-box');
+            expBox.innerHTML = `<strong>💡 توضيح وتحليل السؤال:</strong> ${q.exp}`;
+            expBox.classList.remove('hidden');
+
+            document.getElementById('p-next-btn').classList.remove('hidden');
+        }
+
+        function nextPracticeQuestion() {
+            practiceIndex++;
+            if (practiceIndex < practiceQuestions.length) {
+                loadPracticeQuestion();
+            } else {
+                document.getElementById('p-quiz-box').innerHTML = `
+                    <div class="text-center py-8 space-y-4">
+                        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto shadow-inner">🏆</div>
+                        <h3 class="text-xl font-black text-slate-800">أحسنت! أكملت بنك التحدي بنجاح!</h3>
+                        <p class="text-xs font-bold text-slate-600">درجتك النهائية: ${practiceScore} من ${practiceQuestions.length}</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
